@@ -1,147 +1,569 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>Chelsea & Gisela | 04.04.26</title>
 
   <style>
+    :root {
+      --rose: #b47983;        /* elegant pale rose-pink */
+      --rose-soft: #f8e9ee;   /* very soft pink background */
+      --sage: #9bb39a;        /* soft green */
+      --sage-soft: #e8f3ea;   /* pale green wash */
+      --text-main: #3c3c3c;
+      --bg-main: #faf9f7;
+      --accent: #c9b39b;      /* warm neutral (rustic touch) */
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Georgia', serif;
-      background-color: #fafafa;
-      color: #333;
-      line-height: 1.6;
       margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
     }
-    header {
-      background: #e8f5e9; /* pale green */
-      color: #4a4a4a;
-      text-align: center;
-      padding: 60px 20px;
-      border-bottom: 2px solid #d8d8d8;
+
+    /* NAVBAR */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(250, 249, 247, 0.95);
+      border-bottom: 1px solid #e0d8cf;
+      backdrop-filter: blur(6px);
     }
-    header h1 {
-      font-size: 48px;
-      color: #a2606b; /* pale pink-rose */
-      margin-bottom: 10px;
+
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
-    header p {
-      font-size: 22px;
-      color: #6a8b74; /* muted green */
+
+    .nav-logo {
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose);
+      white-space: nowrap;
     }
-    section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    section h2 {
-      color: #a2606b;
-      border-bottom: 2px solid #e8dfdf;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-    .cta {
-      display: inline-block;
-      padding: 12px 18px;
-      background-color: #a2606b;
-      color: #fff;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 16px;
-      margin-top: 20px;
-    }
-    footer {
-      background: #e8f5e9;
-      text-align: center;
-      padding: 20px;
-      color: #555;
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
       font-size: 14px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      font-size: 12px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--rose);
+      color: var(--rose);
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 70px 20px 60px;
+      background: linear-gradient(
+        135deg,
+        var(--sage-soft),
+        var(--rose-soft)
+      );
+      border-bottom: 1px solid #e0d8cf;
+    }
+
+    .hero-names {
+      font-size: 42px;
+      margin: 0 0 10px;
+      color: var(--rose);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-ampersand {
+      font-family: "Didot", "Georgia", serif;
+      font-size: 52px;
+      line-height: 1;
+    }
+
+    .hero-date-location {
+      font-size: 18px;
+      color: var(--sage);
+      margin: 5px 0 16px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 22px;
+      background-color: var(--rose);
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      background-color: transparent;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #9a606b;
+    }
+
+    .btn-secondary:hover {
+      background-color: #f3ebe2;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 20px;
+    }
+
+    section h2 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8a7b6a;
+      margin-bottom: 22px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 18px;
+      padding: 24px 22px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+      border: 1px solid #eee2d5;
+    }
+
+    .two-column {
+      display: grid;
+      gap: 20px;
+    }
+
+    @media (min-width: 700px) {
+      .two-column {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 0 0 10px;
+    }
+
+    /* PHOTOS GRID */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .photo-placeholder {
+      background: linear-gradient(
+        135deg,
+        rgba(180, 121, 131, 0.1),
+        rgba(155, 179, 154, 0.15)
+      );
+      border-radius: 16px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #7b6a60;
+      text-align: center;
+      padding: 8px;
+      border: 1px dashed #d7c6b4;
+    }
+
+    /* CONTACT */
+    .contact-row {
+      display: grid;
+      gap: 20px;
+    }
+
+    @media (min-width: 650px) {
+      .contact-row {
+        grid-template-columns: 1.3fr 1fr;
+      }
+    }
+
+    .contact-details p {
+      margin: 4px 0;
+    }
+
+    .contact-details a {
+      color: var(--rose);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--rose);
+    }
+
+    .contact-details a:hover {
+      border-bottom-style: solid;
+    }
+
+    .contact-note {
+      font-size: 13px;
+      color: #7a7063;
+      margin-top: 8px;
+    }
+
+    .contact-form label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: block;
+      margin-bottom: 4px;
+      color: #7a7063;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 9px 10px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      border: 1px solid #d8cabb;
+      font-family: inherit;
+      font-size: 14px;
+      background-color: #fdfaf7;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .contact-form button {
+      margin-top: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 28px 20px 32px;
+      font-size: 13px;
+      color: #7a7063;
+      background-color: var(--sage-soft);
+      margin-top: 10px;
+      border-top: 1px solid #e0d8cf;
     }
   </style>
 
-  <!-- 🔐 PASSWORD PROTECTION -->
+  <!-- 🔐 SIMPLE PASSWORD GATE -->
   <script>
-    const password = "Love2026"; // <-- CHANGE THIS to your chosen password
-    let attempt = prompt("Welcome! Please enter the wedding password:");
-    if (attempt !== password) {
-      document.body.innerHTML = "<h2 style='text-align:center; margin-top:20%; color:#a2606b;'>Incorrect password. Please contact Chelsea & Gisela for access.</h2>";
+    const weddingPassword = "Love2026"; // ← change to your chosen password
+
+    const allowThrough = sessionStorage.getItem("weddingAuthorized") === "true";
+
+    if (!allowThrough) {
+      const attempt = prompt("Welcome to Chelsea & Gisela’s wedding website.\n\nPlease enter the password from your invitation:");
+      if (attempt === weddingPassword) {
+        sessionStorage.setItem("weddingAuthorized", "true");
+      } else {
+        document.documentElement.innerHTML =
+          "<body style='margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#faf9f7;font-family:Georgia,serif;'><div style=\"text-align:center;padding:20px;color:#b47983;\"><h2 style='margin-bottom:10px;'>Incorrect password</h2><p>Please check your invitation or reach out to Chelsea &amp; Gisela for access. 🌿</p></div></body>";
+      }
     }
   </script>
 </head>
 
 <body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">Chelsea &amp; Gisela</div>
+      <div class="nav-links">
+        <a href="#our-story">Our Story</a>
+        <a href="#wedding-day">Wedding Day</a>
+        <a href="#travel-stay">Travel &amp; Stay</a>
+        <a href="#photos">Photos</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-  <!-- 🌸 HEADER -->
-  <header>
-    <h1>Chelsea & Gisela</h1>
-    <p>We’re getting married!</p>
-    <p>April 4, 2026 · James P. Davis Hall · Kansas City, KS</p>
+  <!-- HERO -->
+  <header class="hero">
+    <h1 class="hero-names">
+      Chelsea <span class="hero-ampersand">&amp;</span> Gisela
+    </h1>
+    <p class="hero-date-location">
+      April 4, 2026 · James P. Davis Hall · Kansas City, KS
+    </p>
+    <p class="hero-subtitle">
+      We’re so excited to celebrate our wedding with our favorite people in one
+      of our favorite places.
+    </p>
+    <div class="hero-buttons">
+      <a href="https://docs.google.com/forms/your-rsvp-form-link" target="_blank" class="btn-primary">
+        RSVP
+      </a>
+      <a href="#wedding-day" class="btn-secondary">
+        Wedding Details
+      </a>
+    </div>
   </header>
 
-  <!-- 💕 OUR STORY -->
-  <section>
+  <!-- OUR STORY -->
+  <section id="our-story">
     <h2>Our Story</h2>
-    <p>From the moment our paths first crossed in Kansas City, we felt an undeniable connection — something warm, steady, and full of joy. Over time, our friendship blossomed into a love built on laughter, support, and shared dreams.</p>
-    <p>We are so excited to celebrate this new chapter with the people we love most.</p>
+    <div class="section-subtitle">How we found our way to forever</div>
+    <div class="card">
+      <p>
+        Our paths first crossed in Kansas City, where everyday moments slowly
+        turned into something much more than either of us expected. What began
+        as shared jokes, long conversations, and quiet support grew into a love
+        that feels like home.
+      </p>
+      <p>
+        Over the years, we’ve celebrated big milestones and small rituals:
+        cozy nights in, road trips with too many snacks, and the kind of
+        laughter that makes your cheeks hurt. Through it all, we’ve chosen each
+        other—again and again.
+      </p>
+      <p>
+        On April 4, 2026, at James P. Davis Hall, we’re so excited to say
+        “yes” to a lifetime of choosing each other, surrounded by the people
+        who mean the most to us.
+      </p>
+    </div>
   </section>
 
-  <!-- 💍 WEDDING DAY DETAILS -->
-  <section>
-    <h2>The Wedding Day</h2>
-    <p><strong>Ceremony:</strong><br>
-      1:00 PM at James P. Davis Hall<br>
-      4530 N. 91st Street, Kansas City, KS 66109
-    </p>
+  <!-- WEDDING DAY -->
+  <section id="wedding-day">
+    <h2>Wedding Day</h2>
+    <div class="section-subtitle">The celebration at James P. Davis Hall</div>
+    <div class="card two-column">
+      <div>
+        <p><strong>Ceremony</strong><br />
+          4:00 PM · James P. Davis Hall<br />
+          4530 N. 91st Street<br />
+          Kansas City, KS 66109
+        </p>
+        <p>
+          Please plan to arrive 15–20 minutes early so you can find your seat
+          and settle in before the ceremony begins.
+        </p>
 
-    <p><strong>Reception:</strong><br>
-      Immediately following the ceremony — dinner, drinks, and dancing as we celebrate under the warm rustic lights.</p>
+        <p><strong>Reception</strong><br />
+          Immediately following the ceremony, at the same location.<br />
+          Join us for cocktails, dinner, and dancing as we celebrate under the
+          warm lights and rustic charm of the hall.
+        </p>
 
-    <p><strong>Dress Code:</strong> Rustic Elegance
-      <br>Soft hues, timeless style, minimal sparkle encouraged 🌿
-    </p>
-
-    <a href="#rsvp" class="cta">RSVP Now</a>
+        <p><strong>Dress Code</strong><br />
+          Rustic Elegant – think soft hues, flowing fabrics, and timeless
+          silhouettes. The venue includes both indoor and outdoor areas, so we
+          recommend comfortable shoes.</p>
+      </div>
+      <div>
+        <p><strong>Evening Timeline (tentative)</strong></p>
+        <ul>
+          <li>3:30 PM – Guest arrival & seating</li>
+          <li>4:00 PM – Ceremony</li>
+          <li>4:45 PM – Cocktail hour & photos</li>
+          <li>6:00 PM – Dinner</li>
+          <li>7:30 PM – Toasts & first dance</li>
+          <li>8:00 PM – Dancing</li>
+          <li>10:30 PM – Farewell</li>
+        </ul>
+        <p style="font-size: 13px; color: #7a7063;">
+          Timing may shift slightly as we get closer to the date. Check back
+          here before the wedding for any updates.
+        </p>
+      </div>
+    </div>
   </section>
 
-  <!-- ✈️ TRAVEL -->
-  <section>
-    <h2>Travel & Stay</h2>
-    <p>If you're visiting from out of town, here are some nearby options:</p>
+  <!-- TRAVEL & STAY -->
+  <section id="travel-stay">
+    <h2>Travel &amp; Stay</h2>
+    <div class="section-subtitle">For our guests coming near and far</div>
+    <div class="card">
+      <p><strong>Venue</strong><br />
+        James P. Davis Hall<br />
+        4530 N. 91st Street<br />
+        Kansas City, KS 66109
+      </p>
+      <p style="font-size: 13px; color: #7a7063;">
+        Parking is available on-site. Rideshare options (Uber/Lyft) are
+        generally reliable in the area, but we always recommend allowing extra
+        time.
+      </p>
 
-    <ul>
-      <li>📍 <strong>Hotel Kansas City</strong> – 1.5 miles from venue</li>
-      <li>📍 <strong>DoubleTree by Hilton</strong> – 5 miles away (shuttle available)</li>
-      <li>✈️ Nearest airport: Kansas City International (MCI)</li>
-    </ul>
+      <p><strong>Closest Airport</strong><br />
+        Kansas City International Airport (MCI)<br />
+        ~25–35 minutes by car from the venue, depending on traffic.
+      </p>
+
+      <p><strong>Suggested Hotels</strong></p>
+      <ul>
+        <li>
+          <strong>Hotel Option 1</strong> – About X miles from the venue
+          (we can update to a specific hotel once you decide).
+        </li>
+        <li>
+          <strong>Hotel Option 2</strong> – Another nearby option with
+          convenient access.
+        </li>
+      </ul>
+
+      <p style="font-size: 13px; color: #7a7063;">
+        Once we finalize room block details, we’ll add booking links here so
+        you can easily reserve with the group rate.
+      </p>
+    </div>
   </section>
 
-  <!-- 🎁 GIFTS & REGISTRY -->
-  <section>
-    <h2>Registry & Gifts</h2>
-    <p>Your presence at our wedding means the world to us.
-       If you'd like to gift us something, here are a few options:</p>
+  <!-- PHOTOS -->
+  <section id="photos">
+    <h2>Photos</h2>
+    <div class="section-subtitle">A few moments we love</div>
+    <div class="card">
+      <p>
+        We’ll be adding some of our favorite engagement and life photos here
+        as we get closer to the big day. Check back for a little preview of
+        the love and joy we can’t wait to share with you.
+      </p>
 
-    <ul>
-      <li><a href="#" target="_blank">Zola Registry</a></li>
-      <li><a href="#" target="_blank">Amazon Wishlist</a></li>
-      <li>Honeymoon or house fund contributions via Venmo: <strong>@ChelseaGisela</strong></li>
-    </ul>
+      <div class="photo-grid">
+        <div class="photo-placeholder">
+          Engagement photo placeholder<br /> (replace with your own image)
+        </div>
+        <div class="photo-placeholder">
+          Everyday moment placeholder<br /> (us doing something we love)
+        </div>
+        <div class="photo-placeholder">
+          Family / friends placeholder<br /> (to be updated)
+        </div>
+      </div>
+
+      <p style="font-size: 13px; color: #7a7063; margin-top: 14px;">
+        When you're ready, you can replace these placeholders with real
+        images by using <code>&lt;img&gt;</code> tags pointing to your photo
+        files or hosted image URLs.
+      </p>
+    </div>
   </section>
 
-  <!-- 📝 RSVP SECTION -->
-  <section id="rsvp">
-    <h2>RSVP</h2>
-    <p>Please RSVP through the link below:</p>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="section-subtitle">Questions, song requests, or special notes</div>
+    <div class="card contact-row">
+      <div class="contact-details">
+        <p>
+          If you have any questions about the weekend, need help with travel,
+          or want to share something with us, we’d love to hear from you.
+        </p>
+        <p>
+          <strong>Email</strong><br />
+          <a href="mailto:youremail@example.com">
+            youremail@example.com
+          </a>
+        </p>
+        <p>
+          <strong>RSVP Changes</strong><br />
+          If you need to update your RSVP after submitting the form, just send
+          us a quick email with your name and the change.
+        </p>
+        <p class="contact-note">
+          You can also use the form here to send us a note directly from the
+          site.
+        </p>
+      </div>
 
-    <a href="https://forms.gle/MHtT6yDR9hQBo9FLA" class="cta" target="_blank">RSVP Form</a>
+      <div class="contact-form">
+        <!--
+          This is a simple, static form markup. To make it functional, you can:
+          - Connect it to a service like Formspree, Netlify Forms, or
+            formsubmit.co by setting the "action" attribute on the <form>.
+        -->
+        <form action="#" method="post">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your full name" />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Ask a question, share a note, or request a song!"></textarea>
+
+          <button type="submit" class="btn-primary" style="border:none;">
+            Send Message
+          </button>
+        </form>
+        <p class="contact-note">
+          To fully enable this form, connect it to a form handler (like
+          Formspree or Netlify Forms) once the site is hosted.
+        </p>
+      </div>
+    </div>
   </section>
 
-  <!-- 🌿 FOOTER -->
+  <!-- FOOTER -->
   <footer>
-    <p>Thank you for celebrating with us! 🌿</p>
+    Chelsea &amp; Gisela · April 4, 2026 · James P. Davis Hall · Kansas City, KS
+    <br />Thank you for celebrating with us. 🌿
   </footer>
-
 </body>
 </html>
-
