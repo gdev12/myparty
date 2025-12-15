@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Chelsea & Gisela | April 4, 2026</title>
+<title>Chelsea &amp; Gisela | April 4, 2026</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -25,16 +25,16 @@ body{
   font-family:"Nunito Sans",sans-serif;
   color:var(--text);
   position:relative;
-  overflow:hidden; /* ✅ no page scrolling */
+  overflow:hidden; /* no page scrolling */
 }
 
-/* FULL BACKGROUND (NO TINT) */
+/* DEFAULT BACKGROUND for tabs (non-Home): light-white-flowers-wood.jpg */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:url("light-white-flowers-wood.jpg") center/cover no-repeat;
-  z-index:-1;
+  z-index:-2;
 }
 
 /* When locked, hide the main site wrapper */
@@ -95,7 +95,7 @@ body.locked #site-wrapper{display:none}
 .page{
   display:flex;
   flex-direction:column;
-  height:100vh; /* ✅ fit viewport */
+  height:100vh; /* fit viewport */
 }
 
 /* NAV */
@@ -151,7 +151,7 @@ main{
   display:flex;
   justify-content:center;
   padding:18px 16px 22px;
-  overflow:hidden; /* ✅ no page scrolling */
+  overflow:hidden; /* no page scrolling */
 }
 
 /* Panels */
@@ -173,53 +173,19 @@ main{
   box-shadow:0 16px 30px rgba(0,0,0,.10);
   padding:22px;
   height:100%;
-  max-height: calc(100vh - 90px); /* nav + padding */
-  overflow:auto; /* ✅ internal scroll only if content is long */
+  max-height: calc(100vh - 130px); /* nav + footer + padding */
+  overflow:auto; /* internal scroll only if content is long */
 }
 
-/* HOME HERO */
-.hero-wrap{
-  display:grid;
-  gap:18px;
-  align-items:center;
-  background:rgba(47,59,47,.90);
-  border-radius:22px;
-  padding:24px;
-  color:white;
-}
-@media(min-width:840px){
-  .hero-wrap{ grid-template-columns:1.1fr 1fr; }
-}
-
-.hero-names{
-  font-family:"Playfair Display",serif;
-  font-size:38px;
-  letter-spacing:.24em;
-  text-transform:uppercase;
-  margin:0 0 6px;
-}
-.hero-meta{
-  margin:0 0 10px;
-  opacity:.9;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  font-size:12px;
-}
-.hero-lipsync{
-  font-family:"Playfair Display",serif;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  margin:10px 0 10px;
-  font-size:18px;
-  color:#f3e9d9;
-}
-.hero-copy{ margin:0 0 14px; max-width:520px; }
+/* Buttons */
 .hero-buttons{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
+  margin-top: 14px;
 }
-.hero-buttons a{
+.hero-buttons a,
+.home-buttons a{
   display:inline-block;
   padding:10px 20px;
   border-radius:999px;
@@ -230,18 +196,7 @@ main{
   cursor:pointer;
 }
 .btn-primary{ background:white; color:var(--olive-dark); }
-.btn-secondary{ border:1px solid white; color:white; }
-
-.hero-photo{
-  border-radius:20px;
-  overflow:hidden;
-  border:4px solid rgba(255,255,255,.9);
-  box-shadow:0 14px 28px rgba(0,0,0,.6);
-  background:#222;
-  max-width:420px;
-  margin:0 auto;
-}
-.hero-photo img{ width:100%; display:block; object-fit:cover; }
+.btn-secondary{ border:1px solid white; color:white; background:transparent; }
 
 /* Section titles */
 .section-title{
@@ -272,7 +227,7 @@ main{
 .small-note{font-size:12px;color:#777;margin-top:8px}
 ul{ padding-left:18px; margin:0; }
 
-/* Footer (optional) */
+/* Footer */
 footer{
   background:rgba(47,59,47,.95);
   color:white;
@@ -280,21 +235,103 @@ footer{
   padding:12px 16px;
   font-size:12px;
 }
+
+/* =========================
+   HOME TAB BACKGROUND OVERRIDE
+   ========================= */
+.tab-panel[data-tab="home"]{
+  background: url("Main.jpg") center / cover no-repeat;
+  border-radius: 22px;
+  padding: 0;
+}
+
+/* Remove card look on Home (transparent) */
+.tab-panel[data-tab="home"] .panel-card{
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Center content on Home */
+.home-content{
+  min-height: calc(100vh - 140px); /* nav + footer */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  padding: 18px;
+}
+
+/* Text backdrop for readability */
+.home-overlay{
+  background: rgba(0,0,0,0.45);
+  padding: 36px 42px;
+  border-radius: 24px;
+  max-width: 720px;
+}
+
+/* Home typography */
+.home-names{
+  font-family:"Playfair Display",serif;
+  font-size:44px;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  margin:0 0 10px;
+}
+.home-meta{
+  font-size:13px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  opacity:0.95;
+  margin: 0 0 8px;
+}
+.home-lipsync{
+  margin:18px 0 14px;
+  font-family:"Playfair Display",serif;
+  font-size:22px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:#f3e9d9;
+}
+.home-buttons{
+  margin-top:22px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
-  // ✅ PASSWORD
+  // PASSWORD
   const pw="Love2026"; // change me
   const overlay=document.getElementById("password-overlay");
   const input=document.getElementById("password-input");
   const err=document.getElementById("password-error");
   const btn=document.getElementById("password-submit");
 
+  // TAB SWITCHING (no scrolling)
+  const buttons=[...document.querySelectorAll(".nav-links button[data-tab]")];
+  const panels=[...document.querySelectorAll(".tab-panel[data-tab]")];
+
+  function setActiveTab(tabName){
+    buttons.forEach(b=>b.classList.toggle("active", b.dataset.tab===tabName));
+    panels.forEach(p=>{
+      const isActive = p.dataset.tab===tabName;
+      p.classList.toggle("active", isActive);
+      const card = p.querySelector(".panel-card");
+      if(isActive && card) card.scrollTop = 0;
+    });
+  }
+
   const unlock=()=>{
     document.body.classList.remove("locked");
     overlay.style.display="none";
-    // default tab
     setActiveTab("home");
   };
 
@@ -319,31 +356,8 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(e.key==="Enter"){ btn.click(); }
   });
 
-  // ✅ TAB SWITCHING (no scrolling)
-  const buttons=[...document.querySelectorAll(".nav-links button[data-tab]")];
-  const panels=[...document.querySelectorAll(".tab-panel[data-tab]")];
-
-  function setActiveTab(tabName){
-    // nav active state
-    buttons.forEach(b=>{
-      b.classList.toggle("active", b.dataset.tab===tabName);
-    });
-    // show only one panel
-    panels.forEach(p=>{
-      p.classList.toggle("active", p.dataset.tab===tabName);
-      // reset internal scroll position when switching
-      const card=p.querySelector(".panel-card");
-      if(card) card.scrollTop = 0;
-    });
-  }
-
-  // make globally accessible for unlock()
-  window.setActiveTab=setActiveTab;
-
   buttons.forEach(b=>{
-    b.addEventListener("click",()=>{
-      setActiveTab(b.dataset.tab);
-    });
+    b.addEventListener("click",()=>setActiveTab(b.dataset.tab));
   });
 });
 </script>
@@ -378,26 +392,27 @@ document.addEventListener("DOMContentLoaded",()=>{
     </header>
 
     <main>
-      <!-- HOME -->
+      <!-- HOME (Main.jpg background, centered overlay, no card covering image) -->
       <section class="tab-panel active" data-tab="home">
-        <div class="panel-card" style="background: transparent; border: none; box-shadow: none; padding: 0;">
-          <div class="hero-wrap">
-            <div>
-              <h1 class="hero-names">Chelsea &amp; Gisela</h1>
-              <p class="hero-meta">April 4, 2026 · James P. Davis Hall · Kansas City, KS</p>
-              <div class="hero-lipsync">It's a Lip Sync Party!</div>
-              <p class="hero-copy">
+        <div class="panel-card">
+          <div class="home-content">
+            <div class="home-overlay">
+              <h1 class="home-names">Chelsea &amp; Gisela</h1>
+              <p class="home-meta">April 4, 2026 · James P. Davis Hall · Kansas City, KS</p>
+              <div class="home-lipsync">It's a Lip Sync Party!</div>
+              <p>
                 Get ready for a rustic, elegant celebration filled with love, laughter,
                 and unforgettable lip sync performances.
               </p>
-              <div class="hero-buttons">
-                <a class="btn-primary" href="https://docs.google.com/forms/your-main-rsvp-form-link" target="_blank">RSVP</a>
-                <a class="btn-secondary" href="https://docs.google.com/forms/your-lipsync-rsvp-form-link" target="_blank">Lip Sync RSVP</a>
-              </div>
-            </div>
 
-            <div class="hero-photo">
-              <img src="Main.jpg" alt="Chelsea and Gisela" />
+              <div class="home-buttons">
+                <a class="btn-primary" href="https://docs.google.com/forms/your-main-rsvp-form-link" target="_blank" rel="noopener">
+                  RSVP
+                </a>
+                <a class="btn-secondary" href="https://docs.google.com/forms/your-lipsync-rsvp-form-link" target="_blank" rel="noopener">
+                  Lip Sync RSVP
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -456,12 +471,12 @@ document.addEventListener("DOMContentLoaded",()=>{
             <div>
               <p><strong>Evening Timeline (tentative)</strong></p>
               <ul>
-                <li>3:30 PM – Guest arrival & seating</li>
+                <li>3:30 PM – Guest arrival &amp; seating</li>
                 <li>4:00 PM – Ceremony</li>
-                <li>4:45 PM – Cocktail hour & photos</li>
+                <li>4:45 PM – Cocktail hour &amp; photos</li>
                 <li>6:00 PM – Dinner</li>
-                <li>7:30 PM – Toasts & first dance</li>
-                <li>8:00 PM – Lip Sync performances & dancing</li>
+                <li>7:30 PM – Toasts &amp; first dance</li>
+                <li>8:00 PM – Lip Sync performances &amp; dancing</li>
                 <li>10:30 PM – Farewell</li>
               </ul>
               <p class="small-note">
@@ -474,7 +489,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             <p><strong>Helpful Notes</strong></p>
             <ul>
               <li><strong>Parking:</strong> Available on-site.</li>
-              <li><strong>Questions:</strong> Use the Contact info in the RSVP tab if you need anything.</li>
+              <li><strong>Questions:</strong> Use the RSVP tab for contact info if you need anything.</li>
             </ul>
           </div>
         </div>
@@ -532,8 +547,8 @@ document.addEventListener("DOMContentLoaded",()=>{
           </p>
 
           <div class="hero-buttons" style="margin-top:10px;">
-            <a class="btn-primary" href="https://docs.google.com/forms/your-main-rsvp-form-link" target="_blank">Main RSVP</a>
-            <a class="btn-secondary" href="https://docs.google.com/forms/your-lipsync-rsvp-form-link" target="_blank">Lip Sync RSVP</a>
+            <a class="btn-primary" href="https://docs.google.com/forms/your-main-rsvp-form-link" target="_blank" rel="noopener">Main RSVP</a>
+            <a class="btn-secondary" href="https://docs.google.com/forms/your-lipsync-rsvp-form-link" target="_blank" rel="noopener">Lip Sync RSVP</a>
           </div>
 
           <p class="small-note" style="margin-top:14px;">
