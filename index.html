@@ -308,7 +308,14 @@ footer{
 body.home-active::before {
   display: none;
 }
-
+  
+body.home-active{
+  background-image: url("Main.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; /* optional: stays fixed */
+}
 /* Home tab uses Main.jpg as full background */
 .tab-panel[data-tab="home"] {
   background: url("Main.jpg") center / cover no-repeat;
