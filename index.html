@@ -245,7 +245,6 @@ footer{
   background-size: cover; 
   height: calc(100vh - 130px);
 }
-
 /* Remove card look on Home (transparent) */
 .tab-panel[data-tab="home"] .panel-card{
   background: transparent;
@@ -258,21 +257,22 @@ footer{
 
 /* Center content on Home */
 .home-content{
-  min-height: calc(100vh - 140px); /* nav + footer */
+  min-height: calc(100vh - 140px);
   display:flex;
-  align-items:center;
+  align-items:flex-end;      /* ⬇️ move content to bottom */
   justify-content:center;
   text-align:center;
   color:white;
-  padding: 18px;
+  padding: 48px 24px;
 }
 
 /* Text backdrop for readability */
 .home-overlay{
-  background: rgba(0,0,0,0.45);
-  padding: 36px 42px;
-  border-radius: 24px;
-  max-width: 720px;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  max-width: 820px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.45);
 }
 
 /* Home typography */
@@ -317,10 +317,19 @@ body.home-active{
   background-size: cover;
   background-attachment: fixed; /* optional: stays fixed */
 }
-/* Home tab uses Main.jpg as full background */
-.tab-panel[data-tab="home"] {
-  background: url("Main.jpg") center / cover no-repeat;
+  
+.tab-panel[data-tab="home"]::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.0) 40%
+  );
+  pointer-events:none;
 }
+
 
 </style>
 
