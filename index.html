@@ -303,6 +303,16 @@ footer{
   gap:12px;
   flex-wrap:wrap;
 }
+  /* Hide global background when Home tab is active */
+body.home-active::before {
+  display: none;
+}
+
+/* Home tab uses Main.jpg as full background */
+.tab-panel[data-tab="home"] {
+  background: url("Main.jpg") center / cover no-repeat;
+}
+
 </style>
 
 <script>
@@ -317,16 +327,26 @@ document.addEventListener("DOMContentLoaded",()=>{
   // TAB SWITCHING (no scrolling)
   const buttons=[...document.querySelectorAll(".nav-links button[data-tab]")];
   const panels=[...document.querySelectorAll(".tab-panel[data-tab]")];
-
+  
   function setActiveTab(tabName){
-    buttons.forEach(b=>b.classList.toggle("active", b.dataset.tab===tabName));
-    panels.forEach(p=>{
-      const isActive = p.dataset.tab===tabName;
-      p.classList.toggle("active", isActive);
-      const card = p.querySelector(".panel-card");
-      if(isActive && card) card.scrollTop = 0;
-    });
+    // Toggle nav active state
+    buttons.forEach(b =>
+      b.classList.toggle("active", b.dataset.tab === tabName)
+    );
+  
+    // Toggle panels
+    panels.forEach(p =>
+      p.classList.toggle("active", p.dataset.tab === tabName)
+    );
+  
+    // Toggle body background mode
+    document.body.classList.toggle("home-active", tabName === "home");
+  
+    // Reset internal scroll
+    const activePanel = document.querySelector('.tab-panel.active .panel-card');
+    if (activePanel) activePanel.scrollTop = 0;
   }
+
 
   const unlock=()=>{
     document.body.classList.remove("locked");
