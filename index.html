@@ -14,13 +14,11 @@
 
   <style>
     :root {
-      --rose: #b47983;        /* elegant pale rose-pink */
-      --rose-soft: #f8e9ee;   /* very soft pink */
-      --sage: #9bb39a;        /* soft green */
-      --sage-soft: #e8f3ea;   /* pale green */
+      --rose: #b47983;
+      --rose-soft: #f8e9ee;
+      --sage: #9bb39a;
       --text-main: #3c3c3c;
-      --bg-overlay: rgba(255, 255, 255, 0.82);
-      --accent: #c9b39b;      /* warm rustic neutral */
+      --accent: #c9b39b;
     }
 
     * {
@@ -37,32 +35,19 @@
       position: relative;
     }
 
-    /* Background image for entire page */
+    /* Full-page background image, no color modifications */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background-image: url("light-white-flowers-wood.jpg");
+      background-image: url("light-white-flowers-wood.jpg"); /* <-- change if needed */
       background-size: cover;
       background-position: center;
-      /* opacity: 0.35; /* soften it a bit */ 
-      z-index: -2;
-    }
-
-    /* Light overlay for readability */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(248, 233, 238, 0.65),
-        rgba(232, 243, 234, 0.65)
-      );
+      background-repeat: no-repeat;
       z-index: -1;
     }
 
-    /* LOCKED STATE: hide site wrapper until password entered */
+    /* When locked, hide site wrapper */
     body.locked #site-wrapper {
       display: none;
     }
@@ -154,24 +139,11 @@
       background-color: #9a606b;
     }
 
-    /* NAVBAR */
+    /* NAVBAR – transparent over background */
     .nav {
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid #e0d8cf;
-    }
-
-    /* Apply background to nav area too */
-    .nav-bg {
-      background-image: url("light-white-flowers-wood.jpg");
-      background-size: cover;
-      background-position: center;
-    }
-
-    .nav-overlay {
-      background: rgba(250, 249, 247, 0.92);
-      backdrop-filter: blur(6px);
     }
 
     .nav-inner {
@@ -182,6 +154,11 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      /* semi-transparent for readability while still showing background */
+      background: rgba(255, 252, 248, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 0 0 18px 18px;
+      border-bottom: 1px solid rgba(224, 216, 207, 0.8);
     }
 
     .nav-logo {
@@ -214,7 +191,7 @@
       color: var(--rose);
     }
 
-    /* HERO LANDING */
+    /* HERO LANDING – ONLY THING VISIBLE ON INITIAL SCROLL */
     .hero {
       max-width: 1000px;
       margin: 30px auto 24px;
@@ -222,10 +199,10 @@
     }
 
     .hero-inner {
-      background: var(--bg-overlay);
+      background: rgba(255, 252, 248, 0.92);
       border-radius: 22px;
       border: 1px solid #e0d5c7;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
       display: grid;
       gap: 18px;
       padding: 26px 22px 24px;
@@ -246,7 +223,7 @@
 
     .hero-photo {
       width: 100%;
-      max-width: 340px;
+      max-width: 380px;
       border-radius: 20px;
       overflow: hidden;
       border: 4px solid rgba(255, 252, 248, 0.9);
@@ -344,7 +321,7 @@
       background-color: rgba(255, 252, 248, 0.9);
     }
 
-    /* SECTIONS */
+    /* SECTIONS BELOW – HIDDEN BY DEFAULT, SHOWN ONLY WHEN TARGETED */
     section {
       max-width: 800px;
       margin: 0 auto;
@@ -392,7 +369,6 @@
       margin: 0 0 10px;
     }
 
-    /* PHOTO GRID */
     .photo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -418,7 +394,6 @@
       border: 1px dashed #d7c6b4;
     }
 
-    /* CONTACT */
     .contact-row {
       display: grid;
       gap: 20px;
@@ -480,7 +455,6 @@
       margin-top: 4px;
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 24px 20px 28px;
@@ -490,9 +464,20 @@
       border-top: 1px solid #e0d8cf;
       margin-top: 16px;
     }
+
+    /* TAB BEHAVIOR:
+       - All .tab-section hidden by default
+       - Show only the one that matches the URL hash (:target) */
+    .tab-section {
+      display: none;
+    }
+
+    .tab-section:target {
+      display: block;
+    }
   </style>
 
-  <!-- 🔐 PASSWORD LOGIC -->
+  <!-- PASSWORD LOGIC -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const weddingPassword = "Love2026"; // <-- change this
@@ -501,7 +486,6 @@
       const form = document.getElementById("password-form");
       const error = document.getElementById("password-error");
 
-      // if already authorized this session, skip overlay
       if (sessionStorage.getItem("weddingAuthorized") === "true") {
         document.body.classList.remove("locked");
         overlay.style.display = "none";
@@ -531,7 +515,10 @@
   <div id="password-overlay">
     <div id="password-card">
       <h1>Welcome</h1>
-      <p>Please enter the password from your invitation to view<br />Chelsea &amp; Gisela’s wedding details.</p>
+      <p>
+        Please enter the password from your invitation to view<br />
+        Chelsea &amp; Gisela’s wedding details.
+      </p>
       <form id="password-form">
         <label for="password-input">Wedding Password</label>
         <input id="password-input" type="password" autocomplete="off" />
@@ -541,33 +528,29 @@
     </div>
   </div>
 
-  <!-- MAIN SITE WRAPPER -->
+  <!-- MAIN SITE -->
   <div id="site-wrapper">
     <!-- NAV -->
     <nav class="nav">
-      <div class="nav-bg">
-        <div class="nav-overlay">
-          <div class="nav-inner">
-            <div class="nav-logo">Chelsea &amp; Gisela</div>
-            <div class="nav-links">
-              <a href="#our-story">Our Story</a>
-              <a href="#wedding-day">Wedding Day</a>
-              <a href="#travel-stay">Travel &amp; Stay</a>
-              <a href="#photos">Photos</a>
-              <a href="#contact">Contact</a>
-            </div>
-          </div>
+      <div class="nav-inner">
+        <div class="nav-logo">Chelsea &amp; Gisela</div>
+        <div class="nav-links">
+          <a href="#our-story">Our Story</a>
+          <a href="#wedding-day">Wedding Day</a>
+          <a href="#travel-stay">Travel &amp; Stay</a>
+          <a href="#photos">Photos</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </nav>
 
-    <!-- HERO LANDING -->
+    <!-- HERO LANDING (ONLY CONTENT ON INITIAL VIEW) -->
     <header class="hero">
       <div class="hero-inner">
         <!-- Couple Photo -->
         <div class="hero-photo-wrap">
           <div class="hero-photo">
-            <!-- Replace src with your real couple photo -->
+            <!-- Make sure Main.jpg is in the same folder -->
             <img src="Main.jpg" alt="Chelsea &amp; Gisela" />
           </div>
         </div>
@@ -607,8 +590,8 @@
       </div>
     </header>
 
-    <!-- OUR STORY -->
-    <section id="our-story">
+    <!-- OUR STORY (TAB SECTION) -->
+    <section id="our-story" class="tab-section">
       <h2>Our Story</h2>
       <div class="section-subtitle">How we found our way to forever</div>
       <div class="card">
@@ -632,8 +615,8 @@
       </div>
     </section>
 
-    <!-- WEDDING DAY -->
-    <section id="wedding-day">
+    <!-- WEDDING DAY (TAB SECTION) -->
+    <section id="wedding-day" class="tab-section">
       <h2>Wedding Day</h2>
       <div class="section-subtitle">The celebration at James P. Davis Hall</div>
       <div class="card two-column">
@@ -680,8 +663,8 @@
       </div>
     </section>
 
-    <!-- TRAVEL & STAY -->
-    <section id="travel-stay">
+    <!-- TRAVEL & STAY (TAB SECTION) -->
+    <section id="travel-stay" class="tab-section">
       <h2>Travel &amp; Stay</h2>
       <div class="section-subtitle">For our guests coming near and far</div>
       <div class="card">
@@ -720,8 +703,8 @@
       </div>
     </section>
 
-    <!-- PHOTOS -->
-    <section id="photos">
+    <!-- PHOTOS (TAB SECTION) -->
+    <section id="photos" class="tab-section">
       <h2>Photos</h2>
       <div class="section-subtitle">A few moments we love</div>
       <div class="card">
@@ -754,8 +737,8 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact">
+    <!-- CONTACT (TAB SECTION) -->
+    <section id="contact" class="tab-section">
       <h2>Contact</h2>
       <div class="section-subtitle">Questions, song requests, or special notes</div>
       <div class="card contact-row">
@@ -782,7 +765,7 @@
         </div>
 
         <div class="contact-form">
-          <!-- To make this form functional, connect it to Formspree, Netlify Forms, etc. -->
+          <!-- Hook this up to Formspree / Netlify Forms to make it functional -->
           <form action="#" method="post">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Your full name" />
@@ -809,7 +792,7 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (always visible) -->
     <footer>
       Chelsea &amp; Gisela · April 4, 2026 · James P. Davis Hall · Kansas City, KS
       <br />Thank you for celebrating, singing, and lip syncing with us. 🌿
@@ -817,4 +800,3 @@
   </div>
 </body>
 </html>
-
