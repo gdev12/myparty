@@ -91,7 +91,7 @@ body.locked #site-wrapper{display:none}
 #password-error{font-size:12px;color:#a94442;margin-top:8px;min-height:16px}
 
 #home-tab {
-  position: relative;
+  position: static;
 }
 
 #home-tab .home-content {
@@ -208,25 +208,13 @@ main{
 .btn-secondary{ border:1px solid white; color:white; background:transparent; }
 
 /* Section titles */
+
 .section-title {
   font-family:"Playfair Display", serif;
   letter-spacing:.2em;
   text-transform:uppercase;
   color: var(--pink-text);
-  margin:0 0 6px;
-  font-size:18px;
-  font-weight:700; /* bolder title */
-  text-shadow:
-    0 2px 4px rgba(0,0,0,0.25),
-    0 4px 12px rgba(0,0,0,0.20); /* improved readability */
-}
-
-.section-title {
-  font-family:"Playfair Display", serif;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color: var(--pink-text);
-  margin:0 0 10px;
+  margin:0 0 8px;
   font-size:22px;
   font-weight:700; /* stronger, more readable */
 
@@ -237,16 +225,6 @@ main{
 
   /* Subtle stroke around letters */
   -webkit-text-stroke: 0.4px rgba(0,0,0,0.25);
-}
-
-.section-title::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: var(--accent); /* your gold color */
-  margin: 8px auto 0; /* center under text */
-  opacity: 0.8;
 }
   
 .section-subtitle {
