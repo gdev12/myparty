@@ -90,6 +90,16 @@ body.locked #site-wrapper{display:none}
 #password-submit:hover{ background:#9a606b; }
 #password-error{font-size:12px;color:#a94442;margin-top:8px;min-height:16px}
 
+#home-tab {
+  position: relative;
+}
+
+#home-tab .home-content {
+  position: relative;
+  z-index: 2;
+}
+
+
 /* LAYOUT */
 .page{
   display:flex;
@@ -275,6 +285,15 @@ footer{
   text-shadow: 0 2px 10px rgba(0,0,0,0.45);
 }
 
+/* ONLY style home-overlay inside home tab */
+#home-tab .home-overlay {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  max-width: 820px;
+}
+
+
 /* Home typography */
 .home-names{
   font-family:"Playfair Display",serif;
@@ -329,6 +348,14 @@ body.home-active{
   );
   pointer-events:none;
 }
+
+/* FORCE overlays to disappear on all non-Home tabs */
+.tab-panel:not(#home-tab) .home-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
 
 
 </style>
@@ -431,23 +458,13 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     <main>
       <!-- HOME (Main.jpg background, centered overlay, no card covering image) -->
-      <section class="" data-tab="">
+      <section class="tab-panel active" data-tab="home" id="home-tab">
         <div class="home-content">
           <div class="home-overlay">
             <h1 class="home-names">Chelsea &amp; Gisela</h1>
-      
-            <p class="home-meta">
-              April 4, 2026 · James P. Davis Hall · Kansas City, KS
-            </p>
-      
-            <div class="home-lipsync">
-              It's a Lip Sync Party!
-            </div>
-      
-            <p>
-              Get ready for a celebration filled with love, laughter,
-              and unforgettable lip sync performances.
-            </p>
+            <p class="home-meta">April 4, 2026 · James P. Davis Hall · Kansas City, KS</p>
+            <div class="home-lipsync">It's a Lip Sync Party!</div>
+            <p>Get ready for a rustic, elegant celebration filled with love and lip sync performances.</p>
       
             <div class="home-buttons">
               <a class="btn-primary" href="#">RSVP</a>
@@ -455,6 +472,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           </div>
         </div>
       </section>
+
 
       <!-- OUR STORY -->
       <section class="tab-panel" data-tab="our-story">
