@@ -15,7 +15,7 @@
   --accent:#c2a574;
   --card-bg:rgba(232, 250, 234, .85);
   --text:#222;
-  --pink:#b47983;
+  --pink-text: #a86d77;
 }
 
 *{box-sizing:border-box}
@@ -136,7 +136,7 @@ body.locked #site-wrapper{display:none}
 .nav-links button{
   background:transparent;
   border:none;
-  color:#b47983;
+  color:white;
   cursor:pointer;
   font-size:12px;
   letter-spacing:.14em;
@@ -150,8 +150,7 @@ body.locked #site-wrapper{display:none}
   opacity:1;
 }
 .nav-links button.active{
-  color:#b47983;
-  border-bottom-color:#b47983;
+  border-bottom-color:var(--accent);
   opacity:1;
 }
 
@@ -209,21 +208,54 @@ main{
 .btn-secondary{ border:1px solid white; color:white; background:transparent; }
 
 /* Section titles */
-.section-title{
-  font-family:"Playfair Display",serif;
+.section-title {
+  font-family:"Playfair Display", serif;
   letter-spacing:.2em;
   text-transform:uppercase;
-  color:#b47983;
+  color: var(--pink-text);
   margin:0 0 6px;
   font-size:18px;
+  font-weight:700; /* bolder title */
+  text-shadow:
+    0 2px 4px rgba(0,0,0,0.25),
+    0 4px 12px rgba(0,0,0,0.20); /* improved readability */
 }
-.section-subtitle{
-  margin:0 0 16px;
-  letter-spacing:.14em;
+
+.section-title {
+  font-family:"Playfair Display", serif;
+  letter-spacing:.18em;
   text-transform:uppercase;
-  font-size:12px;
-  color:#6f6a60;
+  color: var(--pink-text);
+  margin:0 0 10px;
+  font-size:22px;
+  font-weight:700; /* stronger, more readable */
+
+  /* Enhanced readability on all backgrounds */
+  text-shadow:
+    0 2px 4px rgba(0,0,0,0.25),
+    0 4px 12px rgba(0,0,0,0.20);
+
+  /* Subtle stroke around letters */
+  -webkit-text-stroke: 0.4px rgba(0,0,0,0.25);
 }
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent); /* your gold color */
+  margin: 8px auto 0; /* center under text */
+  opacity: 0.8;
+}
+  
+.section-subtitle {
+  letter-spacing: .16em;
+  font-size: 12px;
+  color: rgba(0,0,0,0.55);
+  text-transform: uppercase;
+}
+
 
 /* grids */
 .grid-two{
