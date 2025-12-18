@@ -63,9 +63,9 @@ body.locked #site-wrapper{display:none}
 #password-card h1{
   margin:0 0 8px;
   font-family:"Playfair Display",serif;
-  letter-spacing:.18em;
+  letter-spacing:.16em;
   text-transform:uppercase;
-  color:var(--pink);
+  color:#b47983;
 }
 #password-card p{ margin:6px 0 16px; color:#6f6256; font-size:14px; }
 #password-input{
@@ -212,7 +212,26 @@ main{
   text-decoration:none;
   cursor:pointer;
 }
-.btn-primary{ background:white; color:var(--olive-dark); }
+.btn-primary{
+  background-color:#b47983;   /* dusty pastel pink */
+  color:#ffffff;
+  border:none;
+  border-radius:999px;
+  padding:12px 20px;
+  font-size:12px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  font-family:"Nunito Sans", sans-serif;
+  cursor:pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-primary:hover{
+  background-color:#9a606b;
+  transform: translateY(-1px);
+  box-shadow:0 6px 16px rgba(0,0,0,0.18);
+}
+
 .btn-secondary{ border:1px solid white; color:white; background:transparent; }
 
 /* Section titles */
