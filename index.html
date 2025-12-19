@@ -483,6 +483,16 @@ document.addEventListener("DOMContentLoaded",()=>{
     if (activePanel) activePanel.scrollTop = 0;
   }
 
+      // BUTTONS THAT SWITCH TABS (e.g., RSVP button on Home)
+  document.addEventListener("click", function(e){
+    const btn = e.target.closest("[data-go-tab]");
+    if(!btn) return;
+  
+    e.preventDefault();
+    const tabName = btn.getAttribute("data-go-tab");
+    setActiveTab(tabName);
+  });
+
 
   const unlock=()=>{
     document.body.classList.remove("locked");
@@ -527,16 +537,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(e.target.id === "lightbox" || e.target.classList.contains("lightbox-close")){
       document.getElementById("lightbox").style.display = "none";
     }
-  });
-
-    // BUTTONS THAT SWITCH TABS (e.g., RSVP button on Home)
-  document.addEventListener("click", function(e){
-    const btn = e.target.closest("[data-go-tab]");
-    if(!btn) return;
-  
-    e.preventDefault();
-    const tabName = btn.getAttribute("data-go-tab");
-    setActiveTab(tabName);
   });
 
 </script>
