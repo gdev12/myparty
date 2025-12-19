@@ -171,6 +171,12 @@ main{
   overflow:hidden; /* no page scrolling */
 }
 
+strong {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #2f3b2f; /* dark olive */
+}
+
 /* Panels */
 .tab-panel{
   width:100%;
@@ -344,6 +350,7 @@ footer{
   text-transform:uppercase;
   opacity:0.95;
   margin: 0 0 8px;
+  color:#e7d3b2;
 }
 .home-lipsync{
   margin:18px 0 14px;
@@ -351,7 +358,7 @@ footer{
   font-size:22px;
   letter-spacing:0.22em;
   text-transform:uppercase;
-  color:#f3e9d9;
+  color:#e7d3b2;
 }
 .home-buttons{
   margin-top:22px;
@@ -399,7 +406,7 @@ body.home-active{
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
   // PASSWORD
-  const pw="040426cg"; // change me
+  const pw="040426"; // change me
   const overlay=document.getElementById("password-overlay");
   const input=document.getElementById("password-input");
   const err=document.getElementById("password-error");
@@ -486,7 +493,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           <button type="button" data-tab="wedding-day">Party Day</button>
           <button type="button" data-tab="gallery">Gallery</button>
           <button type="button" data-tab="travel">Travel &amp; Stay</button>
-          <button type="button" data-tab="registry">Lyp Sync</button>
+          <button type="button" data-tab="registry">Lip Sync</button>
           <button type="button" data-tab="rsvp">RSVP</button>
         </div>
       </div>
@@ -500,7 +507,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             <h1 class="home-names">Chelsea &amp; Gisela</h1>
             <p class="home-meta">April 4, 2026 · James P. Davis Hall · Kansas City, KS</p>
             <div class="home-lipsync">It's a Lip Sync Party!</div>
-            <p>Get ready for a rustic, elegant celebration filled with love and lip sync performances.</p>
+            <p>Get ready for a celebration filled with love and unfrogetable lip sync performances.</p>
       
             <div class="home-buttons">
               <a class="btn-primary" href="#">RSVP</a>
@@ -524,11 +531,13 @@ document.addEventListener("DOMContentLoaded",()=>{
             One of the most memorables roadtrips was driving from Kansas to California so Romeo could see the ocean for the first time.
             He hated the waves and water but surely enjoyed sunbathing in the sand.
           </p>
+
           <p>
             We both love all music genres and enjoy being 'music critiques' on Saturday mornings while we sip our coffees and watch 
             music videos, concerts, and musician interviews and talk about them. We are both 'nerds' and are obsessed with data and facts. 
             Gisela does the research and gathers, and Chelsea does the analysis. We are pretty good in the sheets 😂.
           </p>
+        </br>
           <p>  
             One of our favorite weekend dates is going to a Barnes & Nobles
             and reading books or magazines. There's nothing like the smell of a new book blended with the smell of fresh cup of coffee.
@@ -573,10 +582,10 @@ document.addEventListener("DOMContentLoaded",()=>{
 
               <p>
                 <strong>Dress Code</strong><br />
-                  Your best gift to us? A lip-sync performance!
-                   🎤 Fake vocals. Real commitment. Big energy.
-                  Pick a song, bring the drama (or the laughs), and give it everything you’ve got. 
-                  No singing skills required, only enthusiasm. Good vibes required
+
+                Wear what makes you feel like a star. Whether your outfit is inspired by your lip sync song,
+                perfect for dancing all night, or just your personal style. It’s all encouraged.
+                Comfortable shoes highly recommended!
 
               </p>
             </div>
@@ -620,13 +629,34 @@ document.addEventListener("DOMContentLoaded",()=>{
           </p>
 
           <p><strong>Suggested Hotels</strong></p>
-          <ul>
-            <li><strong>Hotel Option 1</strong> – (add details)</li>
-            <li><strong>Hotel Option 2</strong> – (add details)</li>
-          </ul>
+            <ul>
+              <li style="margin-top:10px;">
+                <strong>Margaritaville Hotel Kansas City</strong><br />
+                A laid-back island vibe fused with modern comforts. This hotel is within 5 miles of our venue.<br />
+                <a
+                  href="https://reservations.margaritavilleresorts.com/?adult=1&arrive=2026-04-03&chain=23717&child=0%C2%A4cy=USD&depart=2026-04-05&group=3102798&hotel=48953&level=hotel&locale=en-US&productcurrency=USD&rooms=1"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Book with our Wedding Room Block
+                </a>
+              </li>
+              <!-- <li>
+                <strong>Hotel Kansas City</strong><br />
+                A stylish downtown option close to dining and nightlife.<br />
+                <a
+                  href="https://www.hotelkc.com"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Book with our Wedding Room Block
+                </a>
+              </li> -->
+            </ul>
 
           <p class="small-note">
-            Once room blocks are finalized, we’ll add booking links here.
+              The Room block is available on a first-come, first-served basis.
+              We recommend booking early to secure the group rate. Cutoff is 28 days prior arrival.
           </p>
         </div>
       </section>
@@ -687,7 +717,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           <p class="section-subtitle">Let us know you’re coming</p>
 
           <p>
-            Please RSVP no longer until March 1st using the button below.
+            Please RSVP no later than Feb 15 using the button below.
           </p>
 
           <div class="hero-buttons" style="margin-top:10px;">
