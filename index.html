@@ -529,6 +529,16 @@ document.addEventListener("DOMContentLoaded",()=>{
     }
   });
 
+    // BUTTONS THAT SWITCH TABS (e.g., RSVP button on Home)
+  document.addEventListener("click", function(e){
+    const btn = e.target.closest("[data-go-tab]");
+    if(!btn) return;
+  
+    e.preventDefault();
+    const tabName = btn.getAttribute("data-go-tab");
+    setActiveTab(tabName);
+  });
+
 </script>
 </head>
 
@@ -573,7 +583,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             <p>Get ready for a celebration filled with love and unforgettable lip sync performances.</p>
       
             <div class="home-buttons">
-              <a class="btn-primary" href="#">RSVP</a>
+              <a class="btn-primary" href="#" data-go-tab="rsvp"></a>
             </div>
           </div>
         </div>
@@ -689,6 +699,7 @@ document.addEventListener("DOMContentLoaded",()=>{
               <img src="romeo.jpg" alt="Romeo" />
               <img src="savedate.jpg" alt="Save the date" />
               <img src="embrace.jpg" alt="Embrace" />
+              <img src="grass.jpg" alt="Grass" />
             </div>
           </div>
         </section>
@@ -741,12 +752,12 @@ document.addEventListener("DOMContentLoaded",()=>{
       <section class="tab-panel" data-tab="registry">
         <div class="panel-card">
           <h2 class="section-title">Lip Sync Performance</h2>
-          <p class="section-subtitle">Your performance is a gift</p>
+          <p class="section-subtitle">REGISTRATION</p>
 
-          <p>
+          <!-- <p>
             Having you perform is the greatest gift. We would love to make memories with you.
             Here are some FAQs you may have about our Lip Sync party
-          </p>
+          </p> -->
 
             <p>
                 <strong>Does the song need to be related to the couple?</strong><br />
@@ -792,7 +803,15 @@ document.addEventListener("DOMContentLoaded",()=>{
         <div class="panel-card">
           <h2 class="section-title">FAQs</h2>
           <p class="section-subtitle">Quick answers for wedding weekend</p>
-      
+          
+          <div class="faq">
+            <h3>Do you have a registry?</h3>
+            <p>Your presence means everything to us, truly! We don’t expect gifts at all. 
+              If you’re participating in the lip sync, consider that our greatest gift 🎤💃
+              If you’d still like to give something, a card is more than enough, and we love handwritten ones! 
+              We will have a card box available at the party.</p>
+          </div>
+          
           <div class="faq">
             <h3>What time should I arrive?</h3>
             <p>Please arrive 15–20 minutes early so you have time to park and find your seat.</p>
@@ -857,7 +876,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           </p>
 
           <div class="hero-buttons" style="margin-top:10px;">
-            <a class="btn-primary" href="https://forms.gle/J3jVM9jRzN8J5p2h7" target="_blank" rel="noopener">Main RSVP</a>
+            <a class="btn-primary" href="https://forms.gle/J3jVM9jRzN8J5p2h7" target="_blank" rel="noopener">RSVP</a>
           </div>
         </div>
       </section>
