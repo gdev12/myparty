@@ -398,6 +398,27 @@ body.home-active{
   visibility: hidden !important;
   opacity: 0 !important;
 }
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap:14px;
+  margin-top:18px;
+}
+
+.gallery-grid img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:16px;
+  box-shadow:0 10px 22px rgba(0,0,0,0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor:pointer;
+}
+
+.gallery-grid img:hover{
+  transform: scale(1.03);
+  box-shadow:0 16px 32px rgba(0,0,0,0.22);
+}
 
 
 
@@ -610,6 +631,27 @@ document.addEventListener("DOMContentLoaded",()=>{
           </div>
         </div>
       </section>
+
+              <!-- GALLERY -->
+        <section class="tab-panel" data-tab="gallery">
+          <div class="panel-card">
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-subtitle">A few of our favorite moments</p>
+        
+            <div class="gallery-grid">
+              <img src="selfie.jpg" alt="Selfie moment" />
+              <img src="horizon.jpg" alt="Horizon" />
+              <img src="dance.jpg" alt="Dancing together" />
+              <img src="dancing.jpg" alt="Dancing" />
+              <img src="hug.jpg" alt="Hug" />
+              <img src="kiss.jpg" alt="Kiss" />
+              <img src="romeo.jpg" alt="Romeo" />
+              <img src="savedate.jpg" alt="Save the date" />
+              <img src="embrace.jpg" alt="Embrace" />
+            </div>
+          </div>
+        </section>
+
 
       <!-- TRAVEL -->
       <section class="tab-panel" data-tab="travel">
