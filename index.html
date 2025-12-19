@@ -397,13 +397,13 @@ footer{
 /* Home typography */
 .home-names{
   font-family:"Playfair Display",serif;
-  font-size:44px;
+  font-size:30px;
   letter-spacing:0.28em;
   text-transform:uppercase;
   margin:0 0 10px;
 }
 .home-meta{
-  font-size:13px;
+  font-size:12px;
   letter-spacing:0.18em;
   text-transform:uppercase;
   opacity:0.95;
@@ -413,7 +413,7 @@ footer{
 .home-lipsync{
   margin:18px 0 14px;
   font-family:"Playfair Display",serif;
-  font-size:22px;
+  font-size:17px;
   letter-spacing:0.22em;
   text-transform:uppercase;
   color:#f3e9d9;
@@ -505,7 +505,9 @@ body.home-active{
   cursor:pointer;
   font-weight:300;
 }
-
+.nav-brand-names{
+  cursor: pointer;
+}
 
 </style>
 
@@ -636,7 +638,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     <!-- NAV -->
     <header class="nav">
       <div class="nav-inner">
-        <div class="nav-brand-names">Chelsea &amp; Gisela</div>
+        <div class="nav-brand-names" data-go-tab="home" role="button" tabindex="0">C &amp; G</div>
                 <!-- Mobile menu button -->
         <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu">
           Menu
@@ -663,7 +665,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             <h1 class="home-names">Chelsea &amp; Gisela</h1>
             <p class="home-meta">April 4, 2026 · James P. Davis Hall · Kansas City, KS</p>
             <div class="home-lipsync">It's a Lip Sync Party!</div>
-            <p>Get ready for a celebration filled with love and unforgettable lip sync performances.</p>
+            <!-- <p>Get ready for a celebration filled with love and unforgettable lip sync performances.</p> -->
       
             <div class="home-buttons">
               <a class="btn-primary" href="#" data-go-tab="rsvp">RSVP</a>
