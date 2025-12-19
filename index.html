@@ -162,6 +162,64 @@ body.locked #site-wrapper{display:none}
   opacity:1;
 }
 
+/* Mobile-friendly nav */
+.nav-toggle{
+  display:none;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 720px){
+  .nav-inner{
+    display:grid;
+    grid-template-columns: 1fr auto;
+    align-items:center;
+  }
+
+  .nav-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Turn tabs row into a dropdown */
+  .nav-links{
+    grid-column: 1 / -1;
+    display:none;                /* hidden until opened */
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(47,59,47,0.92);
+    border: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .nav.open .nav-links{
+    display:flex;
+  }
+
+  .nav-links button{
+    width:100%;
+    text-align:left;
+    padding: 12px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+
+  .nav-links button.active{
+    border-color: rgba(194,165,116,0.8); /* accent */
+  }
+}
+
+
 /* CONTENT AREA (tab panels live here) */
 main{
   flex:1;
@@ -493,6 +551,26 @@ document.addEventListener("DOMContentLoaded",()=>{
     setActiveTab(tabName);
   });
 
+      // Mobile nav toggle
+    const nav = document.querySelector(".nav");
+    const navToggle = document.getElementById("navToggle");
+    
+    if (navToggle) {
+      navToggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    }
+    
+    // Close mobile menu after selecting a tab
+    buttons.forEach(b => {
+      b.addEventListener("click", () => {
+        if (window.innerWidth <= 720) {
+          document.querySelector(".nav")?.classList.remove("open");
+          navToggle?.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
 
   const unlock=()=>{
     document.body.classList.remove("locked");
@@ -559,7 +637,12 @@ document.addEventListener("DOMContentLoaded",()=>{
     <header class="nav">
       <div class="nav-inner">
         <div class="nav-brand-names">Chelsea &amp; Gisela</div>
-        <div class="nav-links">
+                <!-- Mobile menu button -->
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu">
+          Menu
+        </button>
+        
+        <div class="nav-links" id="navMenu">
           <button type="button" data-tab="home" class="active">Home</button>
           <button type="button" data-tab="our-story">Our Story</button>
           <button type="button" data-tab="wedding-day">Party Day</button>
